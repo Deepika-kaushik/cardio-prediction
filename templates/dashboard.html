@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/analysis">Analysis</a>
+    <a href="/predict">Prediction</a>
+</nav>
+
+<hr>
+
+<h1 class="title">Cardiovascular Disease Dashboard</h1>
+
+<div class="card-container">
+
+    <div class="card">
+        <h2>Total Records</h2>
+        <p>{{ total_records }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Total Features</h2>
+        <p>{{ total_features }}</p>
+    </div>
+
+    <div class="card">
+        <h2>Missing Values</h2>
+        <p>{{ missing_values }}</p>
+    </div>
+
+</div>
+<h2>Dataset Preview</h2>  <div class="table-container">  
+    {{ table | safe }}  
+</div>
+<h2>Disease Distribution Chart</h2>
+
+<div class="chart-container">
+    <img src="{{ url_for('static', filename=chart) }}" alt="Disease Distribution">
+</div>
+<h2>Age Distribution Chart</h2>
+
+<div class="chart-container">
+    <img src="{{ url_for('static', filename=age_chart) }}" alt="Age Distribution">
+</div>
+<h2>Gender Distribution Chart</h2>
+
+<div class="chart-container">
+    <img src="{{ url_for('static', filename=gender_chart) }}" alt="Gender Distribution">
+</div>
+
+<h2>Blood Pressure Distribution Chart</h2>
+
+<div class="chart-container">
+    <img src="{{ url_for('static', filename=bp_chart) }}" width="700">
+</div>
+<h2>Cholesterol Distribution Chart</h2>
+
+<div class="chart-container">
+    <img src="{{ url_for('static', filename=chol_chart) }}" alt="Cholesterol Distribution">
+</div>
+<h2>Correlation Matrix</h2>
+
+<div class="chart-container">
+    <img src="{{ url_for('static', filename=corr_chart) }}"
+         alt="Correlation Matrix"
+         width="1000">
+</div>
+
+<footer>
+    <p>Cardiovascular Disease Prediction System</p>
+</footer>
+</body>
+</html>

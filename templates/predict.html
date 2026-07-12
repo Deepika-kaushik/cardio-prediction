@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardio Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<nav>
+     <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/analysis">Analysis</a>
+    <a href="/predict">Prediction</a>
+</nav>
+
+<hr>
+
+<div class="predict-container">
+
+<h1>Cardiovascular Disease Prediction</h1>
+
+<form method="POST">
+
+    Age: <input type="number" name="age"><br><br>
+
+    Gender:
+    <select name="gender">
+        <option value="1">Female</option>
+        <option value="2">Male</option>
+    </select><br><br>
+
+    Height: <input type="number" name="height"><br><br>
+
+    Weight: <input type="number" name="weight"><br><br>
+
+    Systolic BP: <input type="number" name="ap_hi"><br><br>
+
+    Diastolic BP: <input type="number" name="ap_lo"><br><br>
+
+    Cholesterol:
+    <select name="cholesterol">
+        <option value="1">Normal</option>
+        <option value="2">Above Normal</option>
+        <option value="3">Well Above Normal</option>
+    </select><br><br>
+
+    Glucose:
+    <select name="gluc">
+        <option value="1">Normal</option>
+        <option value="2">Above Normal</option>
+        <option value="3">Well Above Normal</option>
+    </select><br><br>
+
+    Smoke:
+    <select name="smoke">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select><br><br>
+
+    Alcohol:
+    <select name="alco">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select><br><br>
+
+    Active:
+    <select name="active">
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select><br><br>
+
+    <button type="submit">Predict</button>
+
+</form>
+
+{% if prediction %}
+    <h2>{{ prediction }}</h2>
+{% endif %}
+
+</div>
+
+<footer>
+    <p>Cardiovascular Disease Prediction System</p>
+</footer>
+</body>
+</html>

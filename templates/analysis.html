@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+    <a href="/">Home</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/analysis">Analysis</a>
+    <a href="/predict">Prediction</a>
+</nav>
+
+<h1>Machine Learning Model Comparison</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Algorithm</th>
+        <th>Accuracy (%)</th>
+    </tr>
+
+    <tr>
+        <td>Logistic Regression</td>
+        <td>71.08</td>
+    </tr>
+
+    <tr>
+        <td>KNN</td>
+        <td>68.21</td>
+    </tr>
+
+    <tr>
+        <td>Decision Tree</td>
+        <td>62.87</td>
+    </tr>
+
+    <tr>
+        <td>Random Forest</td>
+        <td><b>71.30</b></td>
+    </tr>
+
+    <tr>
+        <td>SVM</td>
+        <td>60.54</td>
+    </tr>
+</table>
+
+<h2>Best Model</h2>
+<p>
+Random Forest achieved the highest accuracy of <b>71.30%</b>
+and was selected as the final prediction model.
+</p>
+
+<h2>Correlation Matrix</h2>
+<img src="{{ url_for('static', filename='correlation_matrix.png') }}" width="900">
+
+<footer>
+    <p>Cardiovascular Disease Prediction System</p>
+</footer>
+</body>
+</html>
