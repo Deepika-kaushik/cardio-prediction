@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
 
 import matplotlib
 matplotlib.use('Agg')
 
 import matplotlib.pyplot as plt
-import joblib
 import numpy as np
  
 import seaborn as sns
@@ -17,7 +17,17 @@ import os
 if not os.path.exists("cardio_model.pkl"):
     import train_model
 
-model = joblib.load("cardio_model.pkl")
+df_model = pd.read_csv("cardio_train.csv", sep=";")
+
+X = df_model.drop(["id", "cardio"], axis=1)
+y = df_model["cardio"]
+
+model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
+
+model.fit(X, y)
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -161,10 +171,5 @@ def predict():
         "predict.html",
         prediction=prediction
     )
-import os
-
 if __name__ == "__main__":
-    app.run(
-        host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000))
-    )
+    app.run(debug=True)
